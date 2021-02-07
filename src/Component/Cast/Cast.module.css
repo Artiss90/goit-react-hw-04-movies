@@ -1,0 +1,11 @@
+.list {
+  margin-top: 7px;
+}
+.name {
+  font-size: 4vw;
+}
+.role {
+  font-style: italic;
+  font-size: 3vw;
+  color: var(--dark-color);
+}
