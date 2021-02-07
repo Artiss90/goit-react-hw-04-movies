@@ -3,21 +3,20 @@ import { fetchCast } from 'Services/API';
 
 class Cast extends Component {
   state = {
-    cast: null,
+    cast: [],
   };
   async componentDidMount() {
-    const response = await fetchCast;
+    const propId = this.props.match.params.movieId;
+    const response = await fetchCast(propId);
     this.setState({ cast: response.data.cast });
   }
   render() {
     const { cast } = this.state;
-    if (cast) {
-      console.log(cast[0].name);
-    }
+    console.log(this.props.match.params.movieId);
     return (
       <>
         <h1>Cast</h1>
-        {cast && cast.map(act => console.log(act.name, act.character))}
+        {cast !== [] && cast.map(act => console.log(act.name, act.character))}
       </>
     );
   }

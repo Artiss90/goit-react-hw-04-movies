@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const MoviesPage = () => {
-  return <h1>MoviesPage</h1>;
-};
+class MoviesPage extends Component {
+  render() {
+    return (
+      <>
+        <h1>MoviesPage</h1>
+      </>
+    );
+  }
+}
 
 export default MoviesPage;

@@ -4,7 +4,7 @@ import { fetchTrendingWeek } from 'Services/API';
 
 class HomePage extends Component {
   state = {
-    trendMovie: null,
+    trendMovie: [],
   };
   async componentDidMount() {
     const response = await fetchTrendingWeek;
@@ -16,10 +16,9 @@ class HomePage extends Component {
     return (
       <>
         <h1>HomePage</h1>
-        {trendMovie && (
+        {trendMovie !== [] && (
           <ol>
             {trendMovie.map(movie => (
-              // !temporary plug "/"
               <li key={movie.id}>
                 <Link to={`movies/${movie.id}`}>{movie.title}</Link>
               </li>
