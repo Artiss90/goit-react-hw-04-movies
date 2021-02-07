@@ -1,6 +1,7 @@
 :root {
   --dark-color: #3f51b5;
   --light-color: #fff;
+  --hover-color: rgb(204, 104, 45);
 }
 
 html {
@@ -55,7 +56,13 @@ ul {
 p {
   margin: 0;
 }
-
+a {
+  text-decoration: none;
+}
+a:hover,
+a:focus-within {
+  color: var(--hover-color);
+}
 /*
  * Стили компонента Searchbar
  */

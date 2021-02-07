@@ -6,6 +6,7 @@ import MovieDetailsPage from 'Page/MovieDetailsPage/MovieDetailsPage';
 import Cast from 'Page/Cast/Cast';
 import Reviews from 'Page/Reviews/Reviews';
 import style from './App.module.css';
+// import axios from 'axios';
 
 class App extends Component {
   render() {
@@ -35,7 +36,7 @@ class App extends Component {
           <li>
             <NavLink
               exact
-              to="/movieId"
+              to="/movies/:movieId"
               className={style.Header}
               activeClassName={style.Header__Active}
             >
@@ -45,7 +46,7 @@ class App extends Component {
           <li>
             <NavLink
               exact
-              to="/cast"
+              to="/movies/:movieId/cast"
               className={style.Header}
               activeClassName={style.Header__Active}
             >
@@ -55,7 +56,7 @@ class App extends Component {
           <li>
             <NavLink
               exact
-              to="/reviews"
+              to="/movies/:movieId/reviews"
               className={style.Header}
               activeClassName={style.Header__Active}
             >
@@ -65,10 +66,10 @@ class App extends Component {
         </ul>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/movies" component={MoviesPage} />
-          <Route path="/movieId" component={MovieDetailsPage} />
-          <Route path="/cast" component={Cast} />
-          <Route path="/reviews" component={Reviews} />
+          <Route exact path="/movies" component={MoviesPage} />
+          <Route path="/movies/:movieId" component={MovieDetailsPage} />
+          <Route path="/movies/:movieId/cast" component={Cast} />
+          <Route path="/movies/:movieId/reviews" component={Reviews} />
           <Redirect to="/" />
         </Switch>
       </>

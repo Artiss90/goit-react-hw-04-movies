@@ -6,9 +6,12 @@
   padding: 4px 15px;
   font-size: calc(10px + 2vmin);
   background-color: #1e2036;
-  text-decoration: none;
+  /* text-decoration: none; */
   color: var(--dark-color);
   border-radius: 20px;
+}
+.Header:hover {
+  color: var(--hover-color);
 }
 .Header__Active {
   color: var(--light-color);

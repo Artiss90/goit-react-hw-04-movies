@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { fetchTrendingWeek } from 'Services/API';
 
-const HomePage = () => {
-  return <h1>HomePage</h1>;
-};
+class HomePage extends Component {
+  state = {
+    trendMovie: null,
+  };
+  async componentDidMount() {
+    const response = await fetchTrendingWeek;
+    this.setState({ trendMovie: response.data.results });
+  }
+  render() {
+    const { trendMovie } = this.state;
+    // console.log(this.props.match.url);
+    return (
+      <>
+        <h1>HomePage</h1>
+        {trendMovie && (
+          <ol>
+            {trendMovie.map(movie => (
+              // !temporary plug "/"
+              <li key={movie.id}>
+                <Link to={`movies/${movie.id}`}>{movie.title}</Link>
+              </li>
+            ))}
+          </ol>
+        )}
+      </>
+    );
+  }
+}
 
 export default HomePage;
