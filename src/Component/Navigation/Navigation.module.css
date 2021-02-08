@@ -1,0 +1,38 @@
+.Nav {
+  top: 0;
+  left: 0;
+  position: sticky;
+  z-index: 1100;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  min-height: 64px;
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  list-style: none;
+  color: #fff;
+  background-color: var(--dark-color);
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.Header {
+  padding: 4px 15px;
+  font-size: calc(10px + 2vmin);
+  background-color: #1e2036;
+  /* text-decoration: none; */
+  color: var(--dark-color);
+  border-radius: 20px;
+}
+.Header:hover {
+  color: var(--hover-color);
+}
+.Header__Active {
+  color: var(--light-color);
+}
+
+.Item + .Item {
+  margin-left: 15px;
+}

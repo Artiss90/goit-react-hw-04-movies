@@ -12,11 +12,11 @@ class HomePage extends Component {
   }
   render() {
     const { trendMovie } = this.state;
-    // console.log(this.props.match.url);
+    // console.log(trendMovie);
     return (
       <>
         <h1>HomePage</h1>
-        {trendMovie !== [] && (
+        {trendMovie.length > 0 && (
           <ol>
             {trendMovie.map(movie => (
               <li key={movie.id}>

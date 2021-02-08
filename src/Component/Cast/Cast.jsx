@@ -16,14 +16,18 @@ class Cast extends Component {
     console.log(this.props.match.params.movieId);
     return (
       <>
-        <h1>Cast</h1>
+        <h2>Cast</h2>
         {/* // *с помощью popularity регулируем количество отображаемых актёров  */}
-        {cast !== [] && (
+        {cast.length > 0 && (
           <ul>
             {cast
               .filter(actor => actor.popularity > 5)
               .map(actor => (
                 <li key={actor.id} className={style.list}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
+                    alt={`portrait ${actor.name}`}
+                  />
                   <p className={style.name}>{actor.name}</p>
                   <p className={style.role}>
                     Role: {actor.character || 'minor roles'}
