@@ -5,6 +5,8 @@ import MoviesPage from 'Page/MoviesPage/MoviesPage';
 import MovieDetailsPage from 'Page/MovieDetailsPage/MovieDetailsPage';
 import routes from './routes';
 import Navigation from 'Component/Navigation/Navigation';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
   render() {
@@ -17,6 +19,7 @@ class App extends Component {
           <Route path={routes.movieDetails} component={MovieDetailsPage} />
           <Redirect to={routes.home} />
         </Switch>
+        <ToastContainer Limit={1} />
       </>
     );
   }

@@ -20,9 +20,9 @@ export const fetchMovieId = movieId =>
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY_API}&language=en-US`,
   );
 
-export const fetchQueryMovie = query =>
+export const fetchQueryMovie = (query, page) =>
   axios.get(
-    `https://api.themoviedb.org/3/search/movie?api_key=${KEY_API}&language=en-US&query=${query}&page=1&include_adult=false`,
+    `https://api.themoviedb.org/3/search/movie?api_key=${KEY_API}&language=en-US&query=${query}&page=${page}&include_adult=false`,
   );
 
 export const fetchReviewsMovie = movieId =>

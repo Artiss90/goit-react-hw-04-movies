@@ -17,10 +17,8 @@ class MovieDetailsPage extends Component {
   }
   render() {
     const { movieId } = this.state;
-    const movieYear = movieId.release_date;
     const { url, path } = this.props.match;
 
-    console.log(movieYear);
     return (
       <>
         <h1>MovieDetailsPage</h1>
