@@ -1,8 +1,8 @@
 import Button from 'Component/Button/Button';
+import ListMovie from 'Component/ListMovies/ListMovies';
 import MyLoader from 'Component/Loader/Loader';
 import Searchbar from 'Component/Searchbar/Searchbar';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { fetchQueryMovie } from 'Services/API';
 
 class MoviesPage extends Component {
@@ -68,15 +68,7 @@ class MoviesPage extends Component {
         <Searchbar onSubmitForm={this.onSearch} />
         {loading && <MyLoader onLoad={loading} />}
         {toResult && <p>No result</p>}
-        {articles.length > 0 && (
-          <ol>
-            {articles.map(movie => (
-              <li key={movie.id}>
-                <Link to={`movies/${movie.id}`}>{movie.title}</Link>
-              </li>
-            ))}
-          </ol>
-        )}
+        {articles.length > 0 && <ListMovie list={articles} />}
         {articles.length > 0 && (
           <Button onClick={this.getLoadMore} aria-label="Load more">
             Load more

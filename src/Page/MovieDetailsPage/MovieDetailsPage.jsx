@@ -1,3 +1,4 @@
+import Button from 'Component/Button/Button';
 import Cast from 'Component/Cast/Cast';
 import Reviews from 'Component/Reviews/Reviews';
 import React, { Component } from 'react';
@@ -15,14 +16,19 @@ class MovieDetailsPage extends Component {
     const response = await fetchMovieId(propMovieId);
     this.setState({ movieId: response.data });
   }
+
+  onBack = () => {
+    const { history, location } = this.props;
+    history.push(location.state.from);
+  };
+
   render() {
     const { movieId } = this.state;
     const { url, path } = this.props.match;
-
+    const { location } = this.props;
+    console.log(location);
     return (
       <>
-        <h1>MovieDetailsPage</h1>
-
         {movieId !== '' && (
           <>
             <div className={style.row}>
@@ -31,6 +37,9 @@ class MovieDetailsPage extends Component {
                 alt={movieId.title}
               />
               <div className={style.list}>
+                <Button onClick={this.onBack} aria-label="Go back">
+                  &#8592; Go back
+                </Button>
                 <h2>{`${movieId.title} (${movieId.release_date.slice(
                   0,
                   4,

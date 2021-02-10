@@ -1,5 +1,5 @@
+import ListMovie from 'Component/ListMovies/ListMovies';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { fetchTrendingWeek } from 'Services/API';
 
 class HomePage extends Component {
@@ -16,15 +16,7 @@ class HomePage extends Component {
     return (
       <>
         <h1>HomePage</h1>
-        {trendMovie.length > 0 && (
-          <ol>
-            {trendMovie.map(movie => (
-              <li key={movie.id}>
-                <Link to={`movies/${movie.id}`}>{movie.title}</Link>
-              </li>
-            ))}
-          </ol>
-        )}
+        {trendMovie.length > 0 && <ListMovie list={trendMovie} />}
       </>
     );
   }
