@@ -3,45 +3,63 @@ import ListMovie from 'Component/ListMovies/ListMovies';
 import MyLoader from 'Component/Loader/Loader';
 import Searchbar from 'Component/Searchbar/Searchbar';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { fetchQueryMovie } from 'Services/API';
+/* eslint react/prop-types: 1 */
 
 class MoviesPage extends Component {
+  static propTypes = {
+    history: PropTypes.object,
+    location: PropTypes.object,
+  };
+
   state = {
-    querySearch: '',
     articles: [],
     page: 1,
     loading: false,
     toResult: false,
   };
 
+  componentDidMount() {
+    if (this.props.location.search) {
+      this.getListMovie();
+    }
+  }
+
   componentDidUpdate(prevProps, prevState) {
-    const nextQuery = this.state.querySearch;
-    const prevQuery = prevState.querySearch;
+    const nextQuery = this.props.location.search;
+    const prevQuery = prevProps.location.search;
     if (nextQuery !== prevQuery) {
       this.setState({ toResult: false });
       this.getListMovie();
     }
-    console.log(!!this.toResult);
+    console.log(nextQuery, prevQuery);
     window.scrollTo({
       top: document.documentElement.scrollHeight,
       behavior: 'smooth',
     });
   }
 
-  onSearch = query =>
-    this.setState({ querySearch: query, articles: [], page: 1 });
+  onSearch = query => {
+    this.setState({ articles: [], page: 1 });
+    this.getShowTitle(query);
+  };
 
   getListMovie = () => {
-    const { querySearch, page, articles } = this.state;
+    const { page, articles } = this.state;
+    const { search } = this.props.location;
+    // *убираем '?' из строки
+    const queryModify = search.slice(1);
+    console.log(queryModify);
     // *включаем лоадер
     this.toggleLoading();
-    fetchQueryMovie(querySearch, page)
+    fetchQueryMovie(queryModify, page)
       .then(response => {
         if (response.data.results.length === 0) {
           this.setState({ toResult: true });
           return;
         }
-        return this.setState({
+        this.setState({
           articles: [...articles, ...response.data.results],
           page: page + 1,
         });
@@ -52,6 +70,12 @@ class MoviesPage extends Component {
         this.toggleLoading,
       );
   };
+
+  getShowTitle = query => {
+    const { history, location } = this.props;
+    history.push({ pathname: location.pathname, search: `query=${query}` });
+  };
+
   getLoadMore = () => {
     this.getListMovie();
   };
@@ -61,6 +85,7 @@ class MoviesPage extends Component {
       loading: !loading,
     }));
   };
+
   render() {
     const { loading, articles, toResult } = this.state;
     return (

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { fetchReviewsMovie } from 'Services/API';
 import style from './Reviews.module.css';
+/* eslint react/prop-types: 1 */
 
 class Reviews extends Component {
+  static propTypes = { match: PropTypes.object };
   state = {
     review: [],
   };

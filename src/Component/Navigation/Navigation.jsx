@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import routes from 'routes';
 import style from './Navigation.module.css';
+/* eslint react/prop-types: 1 */
 
 const Navigation = () => {
   return (

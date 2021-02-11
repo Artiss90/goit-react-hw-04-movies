@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { fetchCast } from 'Services/API';
+import PropTypes from 'prop-types';
 import style from './Cast.module.css';
+/* eslint react/prop-types: 1 */
 
 class Cast extends Component {
+  static propTypes = { match: PropTypes.object };
   state = {
     cast: [],
   };
@@ -13,7 +16,7 @@ class Cast extends Component {
   }
   render() {
     const { cast } = this.state;
-    console.log(this.props.match.params.movieId);
+
     return (
       <>
         <h2>Cast</h2>

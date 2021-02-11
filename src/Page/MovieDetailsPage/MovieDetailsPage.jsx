@@ -2,12 +2,19 @@ import Button from 'Component/Button/Button';
 import Cast from 'Component/Cast/Cast';
 import Reviews from 'Component/Reviews/Reviews';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink, Route } from 'react-router-dom';
 import routes from 'routes';
 import { fetchMovieId } from 'Services/API';
 import style from './MovieDetailsPage.module.css';
+/* eslint react/prop-types: 1 */
 
 class MovieDetailsPage extends Component {
+  static propTypes = {
+    match: PropTypes.object,
+    history: PropTypes.object,
+    location: PropTypes.object,
+  };
   state = {
     movieId: '',
   };
@@ -19,14 +26,13 @@ class MovieDetailsPage extends Component {
 
   onBack = () => {
     const { history, location } = this.props;
-    history.push(location.state.from);
+    history.push(location?.state?.from || '/');
+    history.push({ search: location.search });
   };
 
   render() {
     const { movieId } = this.state;
     const { url, path } = this.props.match;
-    const { location } = this.props;
-    console.log(location);
     return (
       <>
         {movieId !== '' && (

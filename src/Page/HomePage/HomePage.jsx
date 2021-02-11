@@ -1,6 +1,7 @@
 import ListMovie from 'Component/ListMovies/ListMovies';
 import React, { Component } from 'react';
 import { fetchTrendingWeek } from 'Services/API';
+/* eslint react/prop-types: 1 */
 
 class HomePage extends Component {
   state = {
