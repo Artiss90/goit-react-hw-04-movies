@@ -64,6 +64,9 @@ a:focus-within {
   color: var(--hover-color);
 }
 
+ul {
+  list-style: none;
+}
 /*
  * Стили компонента ImageGallery
  */

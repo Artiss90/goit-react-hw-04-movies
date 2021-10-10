@@ -22,11 +22,11 @@ class Cast extends Component {
         <h2>Cast</h2>
         {/* // *с помощью popularity регулируем количество отображаемых актёров  */}
         {cast.length > 0 && (
-          <ul>
+          <ul className={style.list}>
             {cast
               .filter(actor => actor.popularity > 5)
               .map(actor => (
-                <li key={actor.id} className={style.list}>
+                <li key={actor.id} className={style.item}>
                   <img
                     src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
                     alt={`portrait ${actor.name}`}

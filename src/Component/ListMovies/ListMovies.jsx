@@ -27,7 +27,7 @@ const ListMovie = ({ list, location }) => {
             >
               {movie.title}
             </Link>
-            release date: {movie.release_date}
+            release date: {movie.release_date.slice(0, 4)}
           </div>
         </li>
       ))}

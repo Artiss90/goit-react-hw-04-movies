@@ -46,17 +46,18 @@ class MovieDetailsPage extends Component {
                 <Button onClick={this.onBack} aria-label="Go back">
                   &#8592; Go back
                 </Button>
-                <h2>{`${movieId.title} (${movieId.release_date.slice(
-                  0,
-                  4,
-                )})`}</h2>
-                <p>{'rating - ' + movieId.vote_average}</p>
-                <h3>Overview:</h3>
-                <p>{movieId.overview}</p>
+                <h2 className="text-info">{`${
+                  movieId.title
+                } (${movieId.release_date.slice(0, 4)})`}</h2>
+                <p className="text-info">
+                  {'rating - ' + movieId.vote_average}
+                </p>
+                <h3 className="text-info">Overview:</h3>
+                <p style={{ paddingRight: '10px' }}>{movieId.overview}</p>
                 {movieId.genres.length > 0 && (
                   <>
-                    <h3>Genres:</h3>
-                    <ul className={style.list}>
+                    <h3 className="text-info">Genres:</h3>
+                    <ul>
                       {movieId.genres.map(genre => (
                         <li key={genre.id}>{genre.name}</li>
                       ))}
