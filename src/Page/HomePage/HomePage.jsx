@@ -13,10 +13,9 @@ class HomePage extends Component {
   }
   render() {
     const { trendMovie } = this.state;
-    // console.log(trendMovie);
     return (
       <>
-        <h1>HomePage</h1>
+        <h1 style={{ padding: '20px' }}>HomePage</h1>
         {trendMovie.length > 0 && <ListMovie list={trendMovie} />}
       </>
     );

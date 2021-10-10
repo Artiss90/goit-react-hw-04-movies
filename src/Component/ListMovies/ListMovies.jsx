@@ -5,21 +5,33 @@ import PropTypes from 'prop-types';
 
 const ListMovie = ({ list, location }) => {
   return (
-    <ol>
+    <ul className="list-group">
       {list.map(movie => (
-        <li key={movie.id}>
-          <Link
-            to={{
-              pathname: `movies/${movie.id}`,
-              state: { from: location.pathname },
-              search: location.search,
-            }}
-          >
-            {movie.title}
-          </Link>
+        <li
+          key={movie.id}
+          className="list-group-item d-flex justify-content-between align-items-start bg-dark text-white"
+        >
+          <img
+            src={`https://image.tmdb.org/t/p/w200/${movie.backdrop_path}`}
+            class="rounded"
+            alt=""
+          ></img>
+          <div class="ms-2 me-auto">
+            <Link
+              to={{
+                pathname: `movies/${movie.id}`,
+                state: { from: location.pathname },
+                search: location.search,
+              }}
+              className="d-block link-info fw-bold"
+            >
+              {movie.title}
+            </Link>
+            release date: {movie.release_date}
+          </div>
         </li>
       ))}
-    </ol>
+    </ul>
   );
 };
 
