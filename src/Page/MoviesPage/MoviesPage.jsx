@@ -5,6 +5,7 @@ import Searchbar from 'Component/Searchbar/Searchbar';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { fetchQueryMovie } from 'Services/API';
+import style from './MoviesPage.module.css';
 /* eslint react/prop-types: 1 */
 
 class MoviesPage extends Component {
@@ -95,9 +96,11 @@ class MoviesPage extends Component {
         {toResult && <p>No result</p>}
         {articles.length > 0 && <ListMovie list={articles} />}
         {articles.length > 0 && (
-          <Button onClick={this.getLoadMore} aria-label="Load more">
-            Load more
-          </Button>
+          <div className={style.containerButton}>
+            <Button onClick={this.getLoadMore} aria-label="Load more">
+              Load more
+            </Button>
+          </div>
         )}
       </>
     );

@@ -6,7 +6,7 @@ const MyLoader = () => {
   return (
     <Loader
       className={style.center}
-      type="Circles"
+      type="Oval"
       color="#00BFFF"
       height={100}
       width={100}

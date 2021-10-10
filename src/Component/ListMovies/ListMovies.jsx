@@ -11,11 +11,19 @@ const ListMovie = ({ list, location }) => {
           key={movie.id}
           className="list-group-item d-flex justify-content-between align-items-start bg-dark text-white"
         >
-          <img
-            src={`https://image.tmdb.org/t/p/w200/${movie.backdrop_path}`}
-            class="rounded"
-            alt=""
-          ></img>
+          {movie?.backdrop_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w200/${movie.backdrop_path}`}
+              class="rounded"
+              alt=""
+            ></img>
+          ) : (
+            <img
+              src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+              class="rounded"
+              alt=""
+            ></img>
+          )}
           <div class="ms-2 me-auto">
             <Link
               to={{
